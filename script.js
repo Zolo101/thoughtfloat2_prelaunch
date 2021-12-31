@@ -43,9 +43,17 @@ const createCube = (text) => {
 //     document.querySelector(".grid").appendChild(createCubeRow(gridX));
 // }
 
-document.querySelector(".grid").appendChild(createCube(text));
+const cube = document.querySelector(".grid").appendChild(createCube(text));
 
-window.addEventListener("mousemove", (e) => {
-    root.style.setProperty("--positionX", `${e.x - (size / 2)}px`);
-    root.style.setProperty("--positionY", `${e.y - (size / 2)}px`);
-})
+// root.style.setProperty("--positionX", `${(cube.clientWidth / 2.5) + (size / 2)}px`);
+// root.style.setProperty("--positionY", `${(cube.clientHeight / 2.5)}px`);
+//
+// const untilClick = () => {
+    window.addEventListener("mousemove", (e) => {
+        root.style.setProperty("--positionX", `${e.x - (size / 2)}px`);
+        root.style.setProperty("--positionY", `${e.y - (size / 2)}px`);
+    })
+//
+//     window.removeEventListener("click", untilClick);
+// }
+// window.addEventListener("click", untilClick);
