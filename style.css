@@ -1,0 +1,105 @@
+:root {
+    --positionX: 0px;
+    --positionY: 0px;
+    --rotationX: 0px;
+    --rotationY: 0px;
+    --rotationZ: 0px;
+    --size: 0px;
+    --outline: 1px solid white;
+}
+
+body {
+    background-color: black;
+    font-family: sans-serif;
+    font-size: 4em;
+    overflow: hidden;
+    user-select: none;
+}
+
+.grid {
+    display: grid;
+}
+
+.cube {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: visible;
+    perspective: 150px;
+    perspective-origin: 50% 50%;
+    transform-style: preserve-3d;
+}
+
+.face {
+    display: block;
+    position: absolute;
+    width: var(--size);
+    height: var(--size);
+    color: white;
+    text-align: center;
+    overflow-wrap: anywhere;
+}
+
+.face:not(.front) {
+    backdrop-filter: blur(1px);
+}
+
+/* Define each face based on direction */
+.front {
+    /*background: rgba(0, 0, 0, 0.3);*/
+    border: var(--outline);
+    transform:
+            translateX(var(--positionX))
+            translateY(var(--positionY))
+            translateZ(calc(var(--size) / 2));
+}
+.back {
+    /*background: rgba(0, 255, 0, 1);*/
+    border: var(--outline);
+    color: black;
+    transform:
+            rotateY(180deg)
+            translateX(calc(0px - var(--positionX)))
+            translateY(var(--positionY))
+            translateZ(calc(var(--size) / 2));
+}
+.right {
+    border: var(--outline);
+    /*background: rgba(196, 0, 0, 0.7);*/
+    transform:
+            rotateY(90deg)
+            translateZ(var(--positionX))
+            translateY(var(--positionY))
+            translateZ(calc(var(--size) / 2));
+}
+.left {
+    border: var(--outline);
+    /*background: rgba(0, 0, 196, 0.7);*/
+    transform:
+            rotateY(-90deg)
+            translateZ(calc(0px - var(--positionX)))
+            translateY(var(--positionY))
+            translateZ(calc(var(--size) / 2));
+}
+.top {
+    border: var(--outline);
+    /*background: rgba(196, 196, 0, 0.7);*/
+    transform:
+            rotateX(90deg)
+            translateX(var(--positionX))
+            translateZ(calc(0px - var(--positionY)))
+            /*translateY(var(--positionY))*/
+            translateZ(calc(var(--size) / 2));
+}
+.bottom {
+    line-height: 0.1em;
+    letter-spacing: -0.2em;
+    border: var(--outline);
+    /*background: rgba(196, 0, 196, 0.7);*/
+    transform:
+            rotateX(-90deg)
+            translateX(var(--positionX))
+            translateZ(var(--positionY))
+            /*translateY(calc(0px - var(--positionY)))*/
+            translateZ(calc(var(--size) / 2));
+}
