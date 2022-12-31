@@ -2,8 +2,8 @@ const root = document.querySelector(":root");
 const size = 200;
 const gridX = 10;
 const gridY = 10;
-const text = "2022? 😭😭"
-const otherText = Array(1000000).fill(".").join("")
+const text = "2023? 🤔🤔"
+const otherText = Array(10000).fill("█").join("")
 const faces = ["front", "back", "right", "left", "top", "bottom"];
 root.style.setProperty("--size", size + "px");
 
@@ -49,10 +49,16 @@ const cube = document.querySelector(".grid").appendChild(createCube(text));
 // root.style.setProperty("--positionY", `${(cube.clientHeight / 2.5)}px`);
 //
 // const untilClick = () => {
-    window.addEventListener("mousemove", (e) => {
-        root.style.setProperty("--positionX", `${e.x - (size / 2)}px`);
-        root.style.setProperty("--positionY", `${e.y - (size / 2)}px`);
-    })
+const moveCube = (e) => {
+    root.style.setProperty("--positionX", `${e.x - (size / 2)}px`);
+    root.style.setProperty("--positionY", `${e.y - (size / 2)}px`);
+}
+
+window.addEventListener("mousemove", moveCube)
+window.addEventListener("touchmove", moveCube)
+
+// root.style.setProperty("--positionX", `${window.outerWidth / 2}px`);
+// root.style.setProperty("--positionY", `${window.outerHeight / 2}px`);
 //
 //     window.removeEventListener("click", untilClick);
 // }
